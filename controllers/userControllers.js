@@ -5,9 +5,12 @@ module.exports.getLoggedInUser = async(req, res)=>{
     const {username, password} = req.body;
     try {
         const user = await User.findOne({username});
-        const pass = bcryptjs.compareSync(password, user.password);        
-      if(user && pass){
-        return res.status(200).json({ message: 'Login successful', user });
+        if(user){
+          const pass = bcryptjs.compareSync(password, user.password);        
+          if(pass)
+          {
+              return res.status(200).json({ message: 'Login successful', user });
+          }
       }
       return res.status(400).json({ message: 'Invalid credentials' });
     } catch (error) {
