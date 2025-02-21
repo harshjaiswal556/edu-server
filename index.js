@@ -1,7 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const routes = require('./routes/studentRoutes')
+const studentRoutes = require('./routes/studentRoutes')
+const userRoutes = require('./routes/userRoutes')
 
 require('dotenv').config();
 
@@ -18,7 +19,8 @@ mongoose.connect(process.env.MONGODB_URL).then(()=>{
     console.log(err);
 })
 
-app.use(routes)
+app.use(studentRoutes)
+app.use(userRoutes)
 
 app.listen(PORT, ()=>{
     console.log(`Listening on PORT: ${PORT}`);
