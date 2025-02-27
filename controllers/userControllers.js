@@ -32,3 +32,8 @@ module.exports.getLoggedInUser = async(req, res)=>{
       return res.json(error)
     }
   }
+
+  module.exports.allUsers = async(req, res)=>{
+    const data = await User.find();
+    res.send(data);
+  }
