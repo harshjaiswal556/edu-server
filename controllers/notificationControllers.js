@@ -15,7 +15,12 @@ module.exports.sendNotification = async(req, res)=>{
     }
 }
 
-module.exports.getNotifications = async(req, res)=>{
-    const data = await Notification.find();
-    res.send(data);
-}
+module.exports.getNotifications = async (req, res) => {
+  const start = parseInt(req.query._start) || 0;
+  const limit = parseInt(req.query._limit) || 10;
+
+  const data = await Notification.find()
+    .skip(start)
+    .limit(limit - start);
+  res.send(data);
+};
