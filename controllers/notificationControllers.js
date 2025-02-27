@@ -14,3 +14,8 @@ module.exports.sendNotification = async(req, res)=>{
         return res.json(error);
     }
 }
+
+module.exports.getNotifications = async(req, res)=>{
+    const data = await Notification.find();
+    res.send(data);
+}
