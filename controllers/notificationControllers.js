@@ -15,12 +15,24 @@ module.exports.sendNotification = async(req, res)=>{
     }
 }
 
-module.exports.getNotifications = async (req, res) => {
-  const start = parseInt(req.query._start) || 0;
-  const limit = parseInt(req.query._limit) || 10;
+module.exports.getNotifications = async(req, res)=>{
+    const data = await Notification.find();
+    res.send(data);
+}
 
-  const data = await Notification.find()
-    .skip(start)
-    .limit(limit - start);
-  res.send(data);
-};
+module.exports.readNotifications = async(req, res)=>{
+    const {_id} = req.params;
+    const {user_id} = req.body;
+    try {
+        console.log(_id, user_id);
+        
+        await Notification.findByIdAndUpdate(
+            _id,
+            { $push: { read: user_id } },
+            { new: true }
+        );
+        res.status(200).send({ message: "Notification marked as read." });
+    } catch (error) {
+        res.status(500).send({ message: "Error marking notification as read.", error });
+    }
+}

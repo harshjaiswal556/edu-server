@@ -7,5 +7,4 @@ const router = Router();
 router.post('/send-notification', sendNotification);
 router.get('/notifications', getNotifications);
 
-
 module.exports = router;
