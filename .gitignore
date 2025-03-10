@@ -1,2 +1,66 @@
 node_modules
 .env
+
+# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# Node Modules (for both server and client)
+node_modules/
+client/node_modules/
+
+# Logs and Debug Files
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+lerna-debug.log
+
+# IDEs and Editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# Miscellaneous
+/.angular/cache
+client/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+
+# Build Output (Client and Server)
+client/dist/
+client/tmp/
+server/dist/
+server/tmp/
+
+# Environment Files
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+client/.env
+server/.env
+
+# System Files
+.DS_Store
+Thumbs.db
